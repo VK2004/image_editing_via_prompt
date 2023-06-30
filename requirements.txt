@@ -65,7 +65,7 @@ supervision==0.11.1
 sympy==1.12
 tenacity==8.2.2
 tensorboard
-tensorboard-data-server==0.7.1
+tensorboard-data-server
 tensorflow-cpu==2.11.0
 tensorflow-estimator
 tensorflow-cpu==2.11.0
