@@ -60,7 +60,7 @@ sahi==0.11.14
 scipy==1.11.1
 seaborn==0.12.2
 shapely==2.0.1
-streamlit==1.24.0
+streamlit
 supervision==0.11.1
 sympy==1.12
 tenacity==8.2.2
