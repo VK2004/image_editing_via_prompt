@@ -23,6 +23,8 @@ def download():
 
     os.remove(file_name)
 
+st.write("Hello !!! In this current version of the project, the available tasks are ....")
+st.write("1. Image Clarification (i.e detecting female, male, top, pant, dress, hat, shoes, suit) \n2. Image Editing (i.e (1) adjusting brightness, (2) resize, (3) blur, (4) rotate, (5) crop) \n")
 
 
 uploaded_file = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg"])
@@ -37,8 +39,8 @@ if uploaded_file is not None:
 tx = st.text_input("Prompt", )
 results_list, num_from_prommpt = chat(tx)
 
-st.write("Here are the things that you wanna do:", results_list)
-st.write("Data values:", num_from_prommpt)
+#st.write("Here are the things that you wanna do:", results_list)
+#st.write("Data values:", num_from_prommpt)
 
 if len(results_list) == 0:
     command_list = ["rotate", "blur", "resize", "brightness", "detect", "crop"]
@@ -260,6 +262,11 @@ if len(results_list) == 0:
                 download()
 
             elif tasks == "detect":
+
+                def resize_image(image, width, height):
+                    resized_image = image.resize((width, height))
+                    return resized_image
+                        
                 # Load the YOLOv5 model
                 model = torch.hub.load('ultralytics/yolov5', 'custom', path='best.pt')
 
@@ -273,11 +280,15 @@ if len(results_list) == 0:
                     return annotated_image
                 
                 #img_cv = np.array(image)
-                rotated_img_cv = perform_object_detection(image)
+                original_width, original_height = image.size
+
+                resized_image = resize_image(image, 620, 620)
+                rotated_img_cv = perform_object_detection(resized_image)
+                rotated_img_cv = resize_image(rotated_img_cv, original_width, original_height)
 
                     # Convert the rotated image back to PIL format
                 new_edited_img = rotated_img_cv
-                
+
                     # Display the rotated image
                 st.image(new_edited_img, caption="New image")   
                 download()
@@ -513,6 +524,11 @@ else:
 
 
         elif tasks == "detect":
+
+            def resize_image(image, width, height):
+                resized_image = image.resize((width, height))
+                return resized_image
+                       
             # Load the YOLOv5 model
             model = torch.hub.load('ultralytics/yolov5', 'custom', path='best.pt')
 
@@ -526,7 +542,11 @@ else:
                 return annotated_image
             
             #img_cv = np.array(image)
-            rotated_img_cv = perform_object_detection(image)
+            original_width, original_height = image.size
+
+            resized_image = resize_image(image, 620, 620)
+            rotated_img_cv = perform_object_detection(resized_image)
+            rotated_img_cv = resize_image(rotated_img_cv, original_width, original_height)
 
                 # Convert the rotated image back to PIL format
             new_edited_img = rotated_img_cv
