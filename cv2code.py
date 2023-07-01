@@ -24,7 +24,7 @@ def download():
     os.remove(file_name)
 
 st.write("Hello !!! In this current version of the project, the available tasks are ....")
-st.write("1. Image Clarification (i.e detecting female, male, top, pant, dress, hat, shoes, suit) \n2. Image Editing (i.e (1) adjusting brightness, (2) resize, (3) blur, (4) rotate, (5) crop) \n")
+st.write("1. Image Classification (i.e detecting female, male, top, pant, dress, hat, shoes, suit) \n2. Image Editing (i.e (1) adjusting brightness, (2) resize, (3) blur, (4) rotate, (5) crop) \n")
 
 
 uploaded_file = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg"])
