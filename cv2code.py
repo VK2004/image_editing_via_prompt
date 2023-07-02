@@ -180,7 +180,7 @@ if len(results_list) == 0:
                     new_width_b = st.slider('adjust the width_b', int(width), 1)
 
                     edit_img = cv2.rectangle(image, (new_width_a,new_height_a) , (new_width_b, new_height_b), (255,255,255), 3)
-                    st.image(edit_img, channels="BGR")
+                    st.image(edit_img)
                     #st.button('Ok')
 
                     st.write("This is the output image. You can adjust the slide before download")
@@ -442,7 +442,7 @@ else:
                 new_width_b = st.slider('adjust the width_b', int(width), 1)
 
                 edit_img = cv2.rectangle(image, (new_width_a,new_height_a) , (new_width_b, new_height_b), (255,255,255), 3)
-                st.image(edit_img, channels="BGR")
+                st.image(edit_img)
                 #st.button('Ok')
 
                 st.write("This is the output image. You can adjust the slide before download")
